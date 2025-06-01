@@ -6,10 +6,10 @@
 #' @template options
 #' @return A data frame containing all available datasets from Rdatasets with columns for Package, Dataset, Title, and other metadata.
 #' @examples
-#' idx <- rdindex()
+#' idx <- rindex()
 #' head(idx)
 #' @export
-rdindex <- function() {
+rindex <- function() {
   cache <- getOption("Rdatasets_cache", default = TRUE)
   assert_flag(cache)
 

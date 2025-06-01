@@ -7,7 +7,7 @@
 rddocs(dataset, package = NULL)
 }
 \arguments{
-\item{dataset}{String. Name of the dataset to download from the Rdatasets archive. Use \code{rdsearch()} to search available datasets.}
+\item{dataset}{String. Name of the dataset to download from the Rdatasets archive. Use \code{rsearch()} to search available datasets.}
 
 \item{package}{String. Package name that originally published the data. If NULL, the function will attempt to automatically detect the package by searching for an exact match in the Rdatasets index.}
 }

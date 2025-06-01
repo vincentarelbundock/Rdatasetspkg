@@ -62,22 +62,22 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"nanoparquet"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="rdsearch-search-for-datasets">
-<code>rdsearch()</code> Search for datasets<a class="anchor" aria-label="anchor" href="#rdsearch-search-for-datasets"></a>
+<h2 id="rsearch-search-for-datasets">
+<code>rsearch()</code> Search for datasets<a class="anchor" aria-label="anchor" href="#rsearch-search-for-datasets"></a>
 </h2>
-<p>Use <code><a href="reference/rdsearch.html">rdsearch()</a></code> to find datasets by name, package, or title:</p>
+<p>Use <code><a href="reference/rsearch.html">rsearch()</a></code> to find datasets by name, package, or title:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/Rdatasetspkg">Rdatasets</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/tinytable/" class="external-link">tinytable</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Search all fields (default behavior)</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"iris"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"iris"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc</span></span>
 <span><span class="co">#&gt; 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html</span></span>
 <span><span class="co">#&gt; 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html</span></span>
 <span></span>
 <span><span class="co"># Case-insensitive search for datasets about the Titanic</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"(?i)TITANIC"</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"(?i)TITANIC"</span>, perl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
 <span><span class="co">#&gt;         Package         Dataset                                 Title Rows</span></span>
 <span><span class="co">#&gt; 247     carData TitanicSurvival Survival of Passengers on the Titanic 1309</span></span>
 <span><span class="co">#&gt; 289  causaldata         titanic  Data from the sinking of the Titanic 2201</span></span>
@@ -89,35 +89,35 @@
 <span><span class="co">#&gt; 2668   vcdExtra        Titanicp             Passengers on the Titanic 1309</span></span>
 <span></span>
 <span><span class="co"># Search only in package names</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"ggplot2movies"</span>, field <span class="op">=</span> <span class="st">"package"</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"ggplot2movies"</span>, field <span class="op">=</span> <span class="st">"package"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;            Package Dataset                                             Title  Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                         CSV                                                                          Doc</span></span>
 <span><span class="co">#&gt; 1129 ggplot2movies  movies Movie information and user ratings from IMDB.com. 58788   24        7           2        0         0        22 https://vincentarelbundock.github.io/Rdatasets/csv/ggplot2movies/movies.csv https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2movies/movies.html</span></span>
 <span></span>
 <span><span class="co"># Search only in dataset names</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"iris"</span>, field <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"iris"</span>, field <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc</span></span>
 <span><span class="co">#&gt; 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html</span></span>
 <span><span class="co">#&gt; 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html</span></span>
 <span></span>
 <span><span class="co"># Returns no rows</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"bad_name"</span>, field <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"bad_name"</span>, field <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span> </span>
 <span><span class="co">#&gt;  [1] Package     Dataset     Title       Rows        Cols        n_binary    n_character n_factor    n_logical   n_numeric   CSV         Doc        </span></span>
 <span><span class="co">#&gt; &lt;0 rows&gt; (or 0-length row.names)</span></span>
 <span></span>
 <span><span class="co"># Search only in titles</span></span>
-<span><span class="fu"><a href="reference/rdsearch.html">rdsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"Edgar Anderson"</span>, field <span class="op">=</span> <span class="st">"title"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rsearch.html">rsearch</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"Edgar Anderson"</span>, field <span class="op">=</span> <span class="st">"title"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc</span></span>
 <span><span class="co">#&gt; 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html</span></span>
 <span><span class="co">#&gt; 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="rddata-download-datasets">
-<code>rddata()</code> Download datasets<a class="anchor" aria-label="anchor" href="#rddata-download-datasets"></a>
+<h2 id="rdata-download-datasets">
+<code>rdata()</code> Download datasets<a class="anchor" aria-label="anchor" href="#rdata-download-datasets"></a>
 </h2>
-<p>Use <code><a href="reference/rddata.html">rddata()</a></code> to download and load datasets:</p>
+<p>Use <code><a href="reference/rdata.html">rdata()</a></code> to download and load datasets:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Download the famous André-Michel Guerry dataset</span></span>
-<span><span class="va">guerry</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"Guerry"</span><span class="op">)</span></span>
+<span><span class="va">guerry</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rdata.html">rdata</a></span><span class="op">(</span><span class="st">"Guerry"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">guerry</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   rownames dept Region Department Crime_pers Crime_prop Literacy Donations Infants Suicides MainCity Wealth Commerce Clergy Crime_parents Infanticide Donation_clergy Lottery Desertion Instruction Prostitutes Distance Area Pop1831</span></span>
 <span><span class="co">#&gt; 1        1    1      E        Ain      28870      15890       37      5098   33120    35039    2:Med     73       58     11            71          60              69      41        55          46          13  218.372 5762  346.03</span></span>
@@ -125,7 +125,7 @@
 <span><span class="co">#&gt; 3        3    3      C     Allier      26747       7925       13     10973   17044   114121    2:Med     61       66     68            46          42              76      66        16          85          34  161.927 7340  298.26</span></span>
 <span></span>
 <span><span class="co"># Download the Titanic data from a specific package</span></span>
-<span><span class="va">titanic</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"Titanic"</span>, <span class="st">"Stat2Data"</span><span class="op">)</span></span>
+<span><span class="va">titanic</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rdata.html">rdata</a></span><span class="op">(</span><span class="st">"Titanic"</span>, <span class="st">"Stat2Data"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">titanic</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   rownames                                Name PClass Age    Sex Survived SexCode</span></span>
 <span><span class="co">#&gt; 1        1        Allen, Miss Elisabeth Walton    1st  29 female        1       1</span></span>
@@ -133,12 +133,12 @@
 <span><span class="co">#&gt; 3        3 Allison, Mr Hudson Joshua Creighton    1st  30   male        0       0</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="rdindex-browse-the-full-dataset-index">
-<code>rdindex()</code> Browse the full dataset index<a class="anchor" aria-label="anchor" href="#rdindex-browse-the-full-dataset-index"></a>
+<h2 id="rindex-browse-the-full-dataset-index">
+<code>rindex()</code> Browse the full dataset index<a class="anchor" aria-label="anchor" href="#rindex-browse-the-full-dataset-index"></a>
 </h2>
-<p>Use <code><a href="reference/rdindex.html">rdindex()</a></code> to get the complete list of available datasets:</p>
+<p>Use <code><a href="reference/rindex.html">rindex()</a></code> to get the complete list of available datasets:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rdindex.html">rdindex</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rindex.html">rindex</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Total datasets available:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">idx</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Total datasets available: 2789</span></span>
 <span></span>
@@ -194,12 +194,12 @@
 <code class="sourceCode R"><span><span class="co"># Default: data.frame (no additional dependencies)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rdata.html">rdata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "data.frame"</span></span>
 <span></span>
 <span><span class="co"># Tibble format (requires tibble package)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"tibble"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rdata.html">rdata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 150 × 6</span></span>
 <span><span class="co">#&gt;    rownames Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
 <span><span class="co">#&gt;       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span></span>
@@ -217,7 +217,7 @@
 <span></span>
 <span><span class="co"># data.table format (requires data.table package)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.table"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/rdata.html">rdata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      rownames Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span></span>
 <span><span class="co">#&gt;         &lt;int&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;    &lt;char&gt;</span></span>
 <span><span class="co">#&gt;   1:        1          5.1         3.5          1.4         0.2    setosa</span></span>
@@ -234,7 +234,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span></span></code></pre></div>
-<p>The format setting applies to all functions that return data (<code><a href="reference/rddata.html">rddata()</a></code>, <code><a href="reference/rdindex.html">rdindex()</a></code>, <code><a href="reference/rdsearch.html">rdsearch()</a></code>).</p>
+<p>The format setting applies to all functions that return data (<code><a href="reference/rdata.html">rdata()</a></code>, <code><a href="reference/rindex.html">rindex()</a></code>, <code><a href="reference/rsearch.html">rsearch()</a></code>).</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

@@ -1,5 +1,5 @@
-# Test rdindex function
-expect_silent(idx <- rdindex())
+# Test rindex function
+expect_silent(idx <- rindex())
 expect_true(is.data.frame(idx))
 expect_true("Package" %in% colnames(idx))
 expect_true("Dataset" %in% colnames(idx))

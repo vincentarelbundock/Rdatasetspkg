@@ -24,22 +24,22 @@ remotes::install_github("vincentarelbundock/Rdatasets")
 install.packages("nanoparquet")
 ```
 
-## `rdsearch()` Search for datasets
+## `rsearch()` Search for datasets
 
-Use `rdsearch()` to find datasets by name, package, or title:
+Use `rsearch()` to find datasets by name, package, or title:
 
 ``` r
 library(Rdatasets)
 library(tinytable)
 
 # Search all fields (default behavior)
-rdsearch(pattern = "iris") |> head()
+rsearch(pattern = "iris") |> head()
 #>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
 #> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
 #> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 
 # Case-insensitive search for datasets about the Titanic
-rdsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
+rsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
 #>         Package         Dataset                                 Title Rows
 #> 247     carData TitanicSurvival Survival of Passengers on the Titanic 1309
 #> 289  causaldata         titanic  Data from the sinking of the Titanic 2201
@@ -51,35 +51,35 @@ rdsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
 #> 2668   vcdExtra        Titanicp             Passengers on the Titanic 1309
 
 # Search only in package names
-rdsearch(pattern = "ggplot2movies", field = "package") 
+rsearch(pattern = "ggplot2movies", field = "package") 
 #>            Package Dataset                                             Title  Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                         CSV                                                                          Doc
 #> 1129 ggplot2movies  movies Movie information and user ratings from IMDB.com. 58788   24        7           2        0         0        22 https://vincentarelbundock.github.io/Rdatasets/csv/ggplot2movies/movies.csv https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2movies/movies.html
 
 # Search only in dataset names
-rdsearch(pattern = "iris", field = "dataset")
+rsearch(pattern = "iris", field = "dataset")
 #>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
 #> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
 #> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 
 # Returns no rows
-rdsearch(pattern = "bad_name", field = "dataset") 
+rsearch(pattern = "bad_name", field = "dataset") 
 #>  [1] Package     Dataset     Title       Rows        Cols        n_binary    n_character n_factor    n_logical   n_numeric   CSV         Doc        
 #> <0 rows> (or 0-length row.names)
 
 # Search only in titles
-rdsearch(pattern = "Edgar Anderson", field = "title")
+rsearch(pattern = "Edgar Anderson", field = "title")
 #>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
 #> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
 #> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 ```
 
-## `rddata()` Download datasets
+## `rdata()` Download datasets
 
-Use `rddata()` to download and load datasets:
+Use `rdata()` to download and load datasets:
 
 ``` r
 # Download the famous André-Michel Guerry dataset
-guerry <- rddata("Guerry")
+guerry <- rdata("Guerry")
 head(guerry, 3)
 #>   rownames dept Region Department Crime_pers Crime_prop Literacy Donations Infants Suicides MainCity Wealth Commerce Clergy Crime_parents Infanticide Donation_clergy Lottery Desertion Instruction Prostitutes Distance Area Pop1831
 #> 1        1    1      E        Ain      28870      15890       37      5098   33120    35039    2:Med     73       58     11            71          60              69      41        55          46          13  218.372 5762  346.03
@@ -87,7 +87,7 @@ head(guerry, 3)
 #> 3        3    3      C     Allier      26747       7925       13     10973   17044   114121    2:Med     61       66     68            46          42              76      66        16          85          34  161.927 7340  298.26
 
 # Download the Titanic data from a specific package
-titanic <- rddata("Titanic", "Stat2Data")
+titanic <- rdata("Titanic", "Stat2Data")
 head(titanic, 3)
 #>   rownames                                Name PClass Age    Sex Survived SexCode
 #> 1        1        Allen, Miss Elisabeth Walton    1st  29 female        1       1
@@ -95,12 +95,12 @@ head(titanic, 3)
 #> 3        3 Allison, Mr Hudson Joshua Creighton    1st  30   male        0       0
 ```
 
-## `rdindex()` Browse the full dataset index
+## `rindex()` Browse the full dataset index
 
-Use `rdindex()` to get the complete list of available datasets:
+Use `rindex()` to get the complete list of available datasets:
 
 ``` r
-idx <- rdindex()
+idx <- rindex()
 cat("Total datasets available:", nrow(idx), "\n")
 #> Total datasets available: 2789
 
@@ -159,12 +159,12 @@ The package supports three output formats that can be set globally:
 # Default: data.frame (no additional dependencies)
 options(Rdatasets_cache = FALSE)
 options(Rdatasets_format = "data.frame")
-rddata("iris") |> class()
+rdata("iris") |> class()
 #> [1] "data.frame"
 
 # Tibble format (requires tibble package)
 options(Rdatasets_format = "tibble")
-rddata("iris")
+rdata("iris")
 #> # A tibble: 150 × 6
 #>    rownames Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #>       <int>        <dbl>       <dbl>        <dbl>       <dbl> <chr>  
@@ -182,7 +182,7 @@ rddata("iris")
 
 # data.table format (requires data.table package)
 options(Rdatasets_format = "data.table")
-rddata("iris")
+rdata("iris")
 #>      rownames Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 #>         <int>        <num>       <num>        <num>       <num>    <char>
 #>   1:        1          5.1         3.5          1.4         0.2    setosa
@@ -201,5 +201,5 @@ options(Rdatasets_cache = TRUE)
 options(Rdatasets_format = "data.frame")
 ```
 
-The format setting applies to all functions that return data
-(`rddata()`, `rdindex()`, `rdsearch()`).
+The format setting applies to all functions that return data (`rdata()`,
+`rindex()`, `rsearch()`).

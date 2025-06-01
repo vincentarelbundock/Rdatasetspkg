@@ -3,7 +3,7 @@
 #' @description
 #' Opens the documentation for a dataset from Rdatasets as an HTML page using `getOption("viewer")` or the Rstudio viewer.
 #'
-#' @inheritParams rddata
+#' @inheritParams rdata
 #' @template options
 #' @examplesIf FALSE
 #' rddocs("Titanic", "Stat2Data")
@@ -15,7 +15,7 @@ rddocs <- function(dataset, package = NULL) {
 
   # If package is NULL, try to find exact match in Rdatasets
   if (is.null(package)) {
-    matches <- rdsearch(paste0("^", dataset, "$"))
+    matches <- rsearch(paste0("^", dataset, "$"))
     if (nrow(matches) == 1) {
       package <- matches$Package[1]
       dataset <- matches$Dataset[1]
@@ -31,7 +31,7 @@ rddocs <- function(dataset, package = NULL) {
       stop(msg, call. = FALSE)
     } else {
       msg <- sprintf(
-        "Dataset '%s' not found. Please:\\n1. Specify the package name, or\\n2. Use rdsearch('...') to search available datasets",
+        "Dataset '%s' not found. Please:\\n1. Specify the package name, or\\n2. Use rsearch('...') to search available datasets",
         dataset
       )
       stop(msg, call. = FALSE)

@@ -5,20 +5,20 @@
 #'
 #' [https://vincentarelbundock.github.io/Rdatasets/](https://vincentarelbundock.github.io/Rdatasets/)
 #'
-#' @param dataset String. Name of the dataset to download from the Rdatasets archive. Use `rdsearch()` to search available datasets.
+#' @param dataset String. Name of the dataset to download from the Rdatasets archive. Use `rsearch()` to search available datasets.
 #' @param package String. Package name that originally published the data. If NULL, the function will attempt to automatically detect the package by searching for an exact match in the Rdatasets index.
 #' @template options
 #' @return A data frame containing the dataset.
 #' @details
-#' If the \code{nanoparquet} package is installed, \code{rddata()} will use the
+#' If the \code{nanoparquet} package is installed, \code{rdata()} will use the
 #' Parquet format, which is faster and uses less bandwidth to download. If
 #' \code{nanoparquet} is not available, the function automatically falls back
 #' to CSV format using base R functionality.
 #' @examples
-#' dat <- rddata("Titanic", "Stat2Data")
+#' dat <- rdata("Titanic", "Stat2Data")
 #' head(dat)
 #' @export
-rddata <- function(
+rdata <- function(
   dataset,
   package = NULL
 ) {
@@ -30,7 +30,7 @@ rddata <- function(
 
   # If package is NULL, try to find exact match in Rdatasets
   if (is.null(package)) {
-    matches <- rdsearch(paste0("^", dataset, "$"))
+    matches <- rsearch(paste0("^", dataset, "$"))
     if (nrow(matches) == 1) {
       package <- matches$Package[1]
       dataset <- matches$Dataset[1]
@@ -46,7 +46,7 @@ rddata <- function(
       stop(msg, call. = FALSE)
     } else {
       msg <- sprintf(
-        "Dataset '%s' not found. Please specify the package name, or use rdsearch('...') to search available datasets",
+        "Dataset '%s' not found. Please specify the package name, or use rsearch('...') to search available datasets",
         dataset
       )
       stop(msg, call. = FALSE)
