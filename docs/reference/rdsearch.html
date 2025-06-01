@@ -38,7 +38,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rdsearch</span><span class="op">(</span><span class="va">pattern</span>, field <span class="op">=</span> <span class="cn">NULL</span>, fixed <span class="op">=</span> <span class="cn">FALSE</span>, perl <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rdsearch</span><span class="op">(</span></span>
+<span>  <span class="va">pattern</span>,</span>
+<span>  field <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  perl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  ignore.case <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -54,11 +60,17 @@
 
 
 <dt id="arg-fixed">fixed<a class="anchor" aria-label="anchor" href="#arg-fixed"></a></dt>
-<dd><p>Logical. If TRUE, <code>pattern</code> is treated as a literal string. If FALSE (default), <code>pattern</code> is treated as a regular expression.</p></dd>
+<dd><p>logical.  If <code>TRUE</code>, <code>pattern</code> is a string to be
+    matched as is.  Overrides all conflicting arguments.</p></dd>
 
 
 <dt id="arg-perl">perl<a class="anchor" aria-label="anchor" href="#arg-perl"></a></dt>
-<dd><p>Logical. If TRUE, uses Perl-compatible regular expressions. If FALSE (default), uses R's default regex engine. Ignored when <code>fixed = TRUE</code>.</p></dd>
+<dd><p>logical.  Should Perl-compatible regexps be used?</p></dd>
+
+
+<dt id="arg-ignore-case">ignore.case<a class="anchor" aria-label="anchor" href="#arg-ignore-case"></a></dt>
+<dd><p>if <code>FALSE</code>, the pattern matching is <em>case
+      sensitive</em> and if <code>TRUE</code>, case is ignored during matching.</p></dd>
 
 </dl></div>
     <div class="section level2">

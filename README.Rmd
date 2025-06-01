@@ -32,7 +32,7 @@ remotes::install_github("vincentarelbundock/Rdatasets")
 install.packages("nanoparquet")
 ```
 
-## rdsearch() - Search for datasets
+## `rdsearch()` Search for datasets
 
 Use `rdsearch()` to find datasets by name, package, or title:
 
@@ -59,7 +59,7 @@ rdsearch(pattern = "bad_name", field = "dataset")
 rdsearch(pattern = "Edgar Anderson", field = "title")
 ```
 
-## rddata() - Download datasets
+## `rddata()` Download datasets
 
 Use `rddata()` to download and load datasets:
 
@@ -73,7 +73,7 @@ titanic <- rddata("Titanic", "Stat2Data")
 head(titanic, 3)
 ```
 
-## rdindex() - Browse the full dataset index
+## `rdindex()` Browse the full dataset index
 
 Use `rdindex()` to get the complete list of available datasets:
 
@@ -86,7 +86,7 @@ cat("Number of packages:", length(unique(idx$Package)), "\n")
 tail(idx, 10)
 ```
 
-## rddocs() - View dataset documentation
+## `rddocs()` View dataset documentation
 
 Use `rddocs()` to open dataset documentation in your browser:
 

@@ -24,7 +24,7 @@ remotes::install_github("vincentarelbundock/Rdatasets")
 install.packages("nanoparquet")
 ```
 
-## rdsearch() - Search for datasets
+## `rdsearch()` Search for datasets
 
 Use `rdsearch()` to find datasets by name, package, or title:
 
@@ -73,7 +73,7 @@ rdsearch(pattern = "Edgar Anderson", field = "title")
 #> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 ```
 
-## rddata() - Download datasets
+## `rddata()` Download datasets
 
 Use `rddata()` to download and load datasets:
 
@@ -95,7 +95,7 @@ head(titanic, 3)
 #> 3        3 Allison, Mr Hudson Joshua Creighton    1st  30   male        0       0
 ```
 
-## rdindex() - Browse the full dataset index
+## `rdindex()` Browse the full dataset index
 
 Use `rdindex()` to get the complete list of available datasets:
 
@@ -121,7 +121,7 @@ tail(idx, 10)
 #> 2789 wooldridge    wine    wine   21    5        0           1        0         0         4    https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wine.csv    https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wine.html
 ```
 
-## rddocs() - View dataset documentation
+## `rddocs()` View dataset documentation
 
 Use `rddocs()` to open dataset documentation in your browser:
 
