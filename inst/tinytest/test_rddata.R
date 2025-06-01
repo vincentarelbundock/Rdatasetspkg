@@ -12,6 +12,12 @@ expect_equal(nrow(data), nrow(data2))
 # Test error for nonexistent dataset
 expect_error(rdata("nonexistent_dataset_xyz"), pattern = "not found")
 
+# Test error for nonexistent package + dataset combination
+expect_error(rdata("nonexistent_dataset", "datasets"), pattern = "not found in package")
+
+# Test error for nonexistent package
+expect_error(rdata("iris", "nonexistent_package"), pattern = "Package .* not found in Rdatasets")
+
 # Test assertion errors
 expect_error(rdata(123), pattern = "must be a character string")
 expect_error(rdata("iris", 123), pattern = "must be a character string")

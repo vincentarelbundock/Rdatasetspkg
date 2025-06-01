@@ -9,6 +9,12 @@ expect_error(rddocs("iris", 123), pattern = "must be a character string")
 # Test error for nonexistent dataset
 expect_error(rddocs("nonexistent_dataset_xyz"), pattern = "not found")
 
+# Test error for nonexistent package + dataset combination
+expect_error(rddocs("nonexistent_dataset", "datasets"), pattern = "not found in package")
+
+# Test error for nonexistent package
+expect_error(rddocs("iris", "nonexistent_package"), pattern = "Package .* not found in Rdatasets")
+
 # Test that function accepts valid inputs without error up to the point of opening docs
 # We can't test the actual doc opening in an automated test environment
 # but we can test input validation and dataset lookup
