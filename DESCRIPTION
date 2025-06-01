@@ -1,0 +1,31 @@
+Package: Rdatasets
+Type: Package
+Title: Access Datasets from the Rdatasets Archive
+Version: 0.0.1
+Date: 2025-05-31
+Authors@R:
+    c(person(given = "Vincent",
+             family = "Arel-Bundock",
+             role = c("aut", "cre", "cph"),
+             email = "vincent.arel-bundock@umontreal.ca",
+             comment = c(ORCID = "0000-0003-2042-7063")))
+Description: Download and access datasets from the Rdatasets archive
+    (<https://vincentarelbundock.github.io/Rdatasets/>). The package provides
+    functions to search, download, and view documentation for thousands of
+    datasets from various R packages, available in both CSV and Parquet
+    formats for efficient access.
+License: GPL (>= 3)
+URL: https://vincentarelbundock.github.io/Rdatasetspkg, https://vincentarelbundock.github.io/Rdatasets
+BugReports: https://github.com/vincentarelbundock/Rdatasetspkg/issues
+Imports:
+    utils
+Suggests: 
+    nanoparquet,
+    tinytable,
+    tinytest,
+    rstudioapi,
+    tibble,
+    data.table
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)

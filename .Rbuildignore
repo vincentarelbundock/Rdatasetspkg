@@ -1,0 +1,11 @@
+^.git$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^Makefile$
+^LICENSE\.md$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+man-roxygen

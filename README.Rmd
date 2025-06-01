@@ -1,0 +1,137 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(width = 300)
+```
+
+# Rdatasets
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Access thousands of datasets from various R packages through the Rdatasets archive. This package provides a simple interface to search, download, and view documentation for datasets stored in both CSV and Parquet formats.
+
+## Installation
+
+You can install the development version of Rdatasets from [GitHub](https://github.com/vincentarelbundock/Rdatasetspkg) with:
+
+``` r
+remotes::install_github("vincentarelbundock/Rdatasets")
+
+# optional dependency: faster downloads and less bandwidth
+install.packages("nanoparquet")
+```
+
+## rdsearch() - Search for datasets
+
+Use `rdsearch()` to find datasets by name, package, or title:
+
+```{r search}
+library(Rdatasets)
+library(tinytable)
+
+# Search all fields (default behavior)
+rdsearch(pattern = "iris") |> head()
+
+# Case-insensitive search for datasets about the Titanic
+rdsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
+
+# Search only in package names
+rdsearch(pattern = "ggplot2movies", field = "package") 
+
+# Search only in dataset names
+rdsearch(pattern = "iris", field = "dataset")
+
+# Returns no rows
+rdsearch(pattern = "bad_name", field = "dataset") 
+
+# Search only in titles
+rdsearch(pattern = "Edgar Anderson", field = "title")
+```
+
+## rddata() - Download datasets
+
+Use `rddata()` to download and load datasets:
+
+```{r download}
+# Download the famous André-Michel Guerry dataset
+guerry <- rddata("Guerry")
+head(guerry, 3)
+
+# Download the Titanic data from a specific package
+titanic <- rddata("Titanic", "Stat2Data")
+head(titanic, 3)
+```
+
+## rdindex() - Browse the full dataset index
+
+Use `rdindex()` to get the complete list of available datasets:
+
+```{r index}
+idx <- rdindex()
+cat("Total datasets available:", nrow(idx), "\n")
+
+cat("Number of packages:", length(unique(idx$Package)), "\n")
+
+tail(idx, 10)
+```
+
+## rddocs() - View dataset documentation
+
+Use `rddocs()` to open dataset documentation in your browser:
+
+```{r docs, eval=FALSE}
+# Open documentation for the iris dataset
+rddocs("iris", "datasets")
+
+# Automatic package detection works here too
+rddocs("mtcars")
+```
+
+## Performance Features
+
+- **Caching**: All functions cache results by default to speed up repeated access and reduce server load
+- **Parquet support**: When `nanoparquet` is installed, datasets are downloaded in Parquet format (faster, smaller)
+- **CSV fallback**: Automatically falls back to CSV format when `nanoparquet` is not available
+
+You can disable caching behavior:
+
+```{r cache, eval=FALSE}
+options(Rdatasets_cache = FALSE)
+```
+
+**Note**: Please keep caching enabled (TRUE) as it makes repeated access faster and avoids overloading the Rdatasets server.
+
+## Output Formats
+
+The package supports three output formats that can be set globally:
+
+```{r format, eval=FALSE}
+# Default: data.frame (no additional dependencies)
+options(Rdatasets_cache = FALSE)
+options(Rdatasets_format = "data.frame")
+rddata("iris") |> class()
+
+# Tibble format (requires tibble package)
+options(Rdatasets_format = "tibble")
+rddata("iris")
+
+# data.table format (requires data.table package)
+options(Rdatasets_format = "data.table")
+rddata("iris")
+
+options(Rdatasets_cache = TRUE)
+options(Rdatasets_format = "data.frame")
+```
+
+The format setting applies to all functions that return data (`rddata()`, `rdindex()`, `rdsearch()`).

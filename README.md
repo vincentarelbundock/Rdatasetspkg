@@ -1,0 +1,177 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Rdatasets
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+Access thousands of datasets from various R packages through the
+Rdatasets archive. This package provides a simple interface to search,
+download, and view documentation for datasets stored in both CSV and
+Parquet formats.
+
+## Installation
+
+You can install the development version of Rdatasets from
+[GitHub](https://github.com/vincentarelbundock/Rdatasetspkg) with:
+
+``` r
+remotes::install_github("vincentarelbundock/Rdatasets")
+
+# optional dependency: faster downloads and less bandwidth
+install.packages("nanoparquet")
+```
+
+## rdsearch() - Search for datasets
+
+Use `rdsearch()` to find datasets by name, package, or title:
+
+``` r
+library(Rdatasets)
+library(tinytable)
+
+# Search all fields (default behavior)
+rdsearch(pattern = "iris") |> head()
+#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+
+# Case-insensitive search for datasets about the Titanic
+rdsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
+#>         Package         Dataset                                 Title Rows
+#> 247     carData TitanicSurvival Survival of Passengers on the Titanic 1309
+#> 289  causaldata         titanic  Data from the sinking of the Titanic 2201
+#> 323       COUNT         titanic                               titanic 1316
+#> 324       COUNT      titanicgrp                            titanicgrp   12
+#> 577    datasets         Titanic Survival of passengers on the Titanic   32
+#> 2319  Stat2Data         Titanic             Passengers on the Titanic 1313
+#> 2612        vcd       Lifeboats              Lifeboats on the Titanic   18
+#> 2668   vcdExtra        Titanicp             Passengers on the Titanic 1309
+
+# Search only in package names
+rdsearch(pattern = "ggplot2movies", field = "package") 
+#>            Package Dataset                                             Title  Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                         CSV                                                                          Doc
+#> 1129 ggplot2movies  movies Movie information and user ratings from IMDB.com. 58788   24        7           2        0         0        22 https://vincentarelbundock.github.io/Rdatasets/csv/ggplot2movies/movies.csv https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2movies/movies.html
+
+# Search only in dataset names
+rdsearch(pattern = "iris", field = "dataset")
+#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+
+# Returns no rows
+rdsearch(pattern = "bad_name", field = "dataset") 
+#>  [1] Package     Dataset     Title       Rows        Cols        n_binary    n_character n_factor    n_logical   n_numeric   CSV         Doc        
+#> <0 rows> (or 0-length row.names)
+
+# Search only in titles
+rdsearch(pattern = "Edgar Anderson", field = "title")
+#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+```
+
+## rddata() - Download datasets
+
+Use `rddata()` to download and load datasets:
+
+``` r
+# Download the famous André-Michel Guerry dataset
+guerry <- rddata("Guerry")
+head(guerry, 3)
+#>   rownames dept Region Department Crime_pers Crime_prop Literacy Donations Infants Suicides MainCity Wealth Commerce Clergy Crime_parents Infanticide Donation_clergy Lottery Desertion Instruction Prostitutes Distance Area Pop1831
+#> 1        1    1      E        Ain      28870      15890       37      5098   33120    35039    2:Med     73       58     11            71          60              69      41        55          46          13  218.372 5762  346.03
+#> 2        2    2      N      Aisne      26226       5521       51      8901   14572    12831    2:Med     22       10     82             4          82              36      38        82          24         327   65.945 7369  513.00
+#> 3        3    3      C     Allier      26747       7925       13     10973   17044   114121    2:Med     61       66     68            46          42              76      66        16          85          34  161.927 7340  298.26
+
+# Download the Titanic data from a specific package
+titanic <- rddata("Titanic", "Stat2Data")
+head(titanic, 3)
+#>   rownames                                Name PClass Age    Sex Survived SexCode
+#> 1        1        Allen, Miss Elisabeth Walton    1st  29 female        1       1
+#> 2        2         Allison, Miss Helen Loraine    1st   2 female        0       1
+#> 3        3 Allison, Mr Hudson Joshua Creighton    1st  30   male        0       0
+```
+
+## rdindex() - Browse the full dataset index
+
+Use `rdindex()` to get the complete list of available datasets:
+
+``` r
+idx <- rdindex()
+cat("Total datasets available:", nrow(idx), "\n")
+#> Total datasets available: 2789
+
+cat("Number of packages:", length(unique(idx$Package)), "\n")
+#> Number of packages: 86
+
+tail(idx, 10)
+#>         Package Dataset   Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                       CSV                                                                        Doc
+#> 2780 wooldridge twoyear twoyear 6763   23       15           0        0         0        23 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/twoyear.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/twoyear.html
+#> 2781 wooldridge   volat   volat  558   17        0           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/volat.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/volat.html
+#> 2782 wooldridge   vote1   vote1  173   10        1           1        0         0         9   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote1.html
+#> 2783 wooldridge   vote2   vote2  186   26        5           1        0         0        25   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote2.html
+#> 2784 wooldridge voucher voucher  990   19       13           0        0         0        19 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/voucher.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/voucher.html
+#> 2785 wooldridge   wage1   wage1  526   24       16           0        0         0        24   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage1.html
+#> 2786 wooldridge   wage2   wage2  935   17        4           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage2.html
+#> 2787 wooldridge wagepan wagepan 4360   44       37           0        0         0        44 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wagepan.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wagepan.html
+#> 2788 wooldridge wageprc wageprc  286   20        0           0        0         0        20 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wageprc.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wageprc.html
+#> 2789 wooldridge    wine    wine   21    5        0           1        0         0         4    https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wine.csv    https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wine.html
+```
+
+## rddocs() - View dataset documentation
+
+Use `rddocs()` to open dataset documentation in your browser:
+
+``` r
+# Open documentation for the iris dataset
+rddocs("iris", "datasets")
+
+# Automatic package detection works here too
+rddocs("mtcars")
+```
+
+## Performance Features
+
+- **Caching**: All functions cache results by default to speed up
+  repeated access and reduce server load
+- **Parquet support**: When `nanoparquet` is installed, datasets are
+  downloaded in Parquet format (faster, smaller)
+- **CSV fallback**: Automatically falls back to CSV format when
+  `nanoparquet` is not available
+
+You can disable caching behavior:
+
+``` r
+options(Rdatasets_cache = FALSE)
+```
+
+**Note**: Please keep caching enabled (TRUE) as it makes repeated access
+faster and avoids overloading the Rdatasets server.
+
+## Output Formats
+
+The package supports three output formats that can be set globally:
+
+``` r
+# Default: data.frame (no additional dependencies)
+options(Rdatasets_cache = FALSE)
+options(Rdatasets_format = "data.frame")
+rddata("iris") |> class()
+
+# Tibble format (requires tibble package)
+options(Rdatasets_format = "tibble")
+rddata("iris")
+
+# data.table format (requires data.table package)
+options(Rdatasets_format = "data.table")
+rddata("iris")
+
+options(Rdatasets_cache = TRUE)
+options(Rdatasets_format = "data.frame")
+```
+
+The format setting applies to all functions that return data
+(`rddata()`, `rdindex()`, `rdsearch()`).
