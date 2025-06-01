@@ -15,7 +15,7 @@ Description: Download and access datasets from the Rdatasets archive
     datasets from various R packages, available in both CSV and Parquet
     formats for efficient access.
 License: GPL (>= 3)
-URL: https://vincentarelbundock.github.io/Rdatasetspkg, https://vincentarelbundock.github.io/Rdatasets
+URL: https://vincentarelbundock.github.io/Rdatasetspkg/, https://vincentarelbundock.github.io/Rdatasets/
 BugReports: https://github.com/vincentarelbundock/Rdatasetspkg/issues
 Imports:
     utils
