@@ -14,6 +14,7 @@
 #' Parquet format, which is faster and uses less bandwidth to download. If
 #' \code{nanoparquet} is not available, the function automatically falls back
 #' to CSV format using base R functionality.
+#' @examples
 #' dat <- rddata("Titanic", "Stat2Data")
 #' head(dat)
 #' @export

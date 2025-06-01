@@ -26,17 +26,7 @@ rdsearch(
       sensitive} and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
-A data frame with matching datasets.Search all fields (default behavior)
-
-rdsearch("iris")Case-insensitive search
-
-rdsearch("(?i)titanic")Search only in package names
-
-rdsearch("datasets", field = "package")Search only in dataset names
-
-rdsearch("iris", field = "dataset")Search only in titles
-
-rdsearch("Edgar Anderson", field = "title")
+A data frame with matching datasets.
 }
 \description{
 Search available datasets from the Rdatasets archive by regular expression.
@@ -63,3 +53,19 @@ The following global options control package behavior:
 }
 }
 
+\examples{
+# Search all fields (default behavior)
+rdsearch("iris")
+
+# Case-insensitive search
+rdsearch("(?i)titanic")
+
+# Search only in package names
+rdsearch("datasets", field = "package")
+
+# Search only in dataset names
+rdsearch("iris", field = "dataset")
+
+# Search only in titles
+rdsearch("Edgar Anderson", field = "title")
+}

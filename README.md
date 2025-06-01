@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Rdatasets
+# Rdatasets package for `R`
 
-<!-- badges: start -->
+The [Rdatasets Archive](https://vincentarelbundock.github.io/Rdatasets/)
+is a language-agnostic website that hosts thousands of datasets in CSV
+format. These datasets can be freely downloaded from the website (with
+documentation), or from any data analysis environment.
 
-<!-- badges: end -->
-
-Access thousands of datasets from various R packages through the
-Rdatasets archive. This package provides a simple interface to search,
-download, and view documentation for datasets stored in both CSV and
-Parquet formats.
+The present page describes a package for `R` that provides a simple
+interface to search, download, and view documentation for datasets
+stored in both CSV and Parquet formats.
 
 ## Installation
 

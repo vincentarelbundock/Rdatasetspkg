@@ -24,8 +24,6 @@ If the \code{nanoparquet} package is installed, \code{rddata()} will use the
 Parquet format, which is faster and uses less bandwidth to download. If
 \code{nanoparquet} is not available, the function automatically falls back
 to CSV format using base R functionality.
-dat <- rddata("Titanic", "Stat2Data")
-head(dat)
 }
 \section{Global Options}{
 
@@ -49,3 +47,7 @@ The following global options control package behavior:
 }
 }
 
+\examples{
+dat <- rddata("Titanic", "Stat2Data")
+head(dat)
+}

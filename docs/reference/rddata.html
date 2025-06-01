@@ -65,9 +65,7 @@ https://vincentarelbundock.github.io/Rdatasets/"></head><body>
     <p>If the <code>nanoparquet</code> package is installed, <code>rddata()</code> will use the
 Parquet format, which is faster and uses less bandwidth to download. If
 <code>nanoparquet</code> is not available, the function automatically falls back
-to CSV format using base R functionality.
-dat &lt;- rddata("Titanic", "Stat2Data")
-head(dat)</p>
+to CSV format using base R functionality.</p>
     </div>
     <div class="section level2">
     <h2 id="global-options">Global Options<a class="anchor" aria-label="anchor" href="#global-options"></a></h2>
@@ -84,6 +82,26 @@ head(dat)</p>
 </ul></li>
 </ul></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">rddata</span><span class="op">(</span><span class="st">"Titanic"</span>, <span class="st">"Stat2Data"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   rownames                                          Name PClass   Age    Sex</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1                  Allen, Miss Elisabeth Walton    1st 29.00 female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2                   Allison, Miss Helen Loraine    1st  2.00 female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3           Allison, Mr Hudson Joshua Creighton    1st 30.00   male</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        4 Allison, Mrs Hudson JC (Bessie Waldo Daniels)    1st 25.00 female</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        5                 Allison, Master Hudson Trevor    1st  0.92   male</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        6                            Anderson, Mr Harry    1st 47.00   male</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Survived SexCode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        1       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        1       0</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

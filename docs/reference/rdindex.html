@@ -43,9 +43,7 @@
 
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame containing all available datasets from Rdatasets with columns for Package, Dataset, Title, and other metadata.
-idx &lt;- rdindex()
-head(idx)</p>
+    <p>A data frame containing all available datasets from Rdatasets with columns for Package, Dataset, Title, and other metadata.</p>
     </div>
     <div class="section level2">
     <h2 id="global-options">Global Options<a class="anchor" aria-label="anchor" href="#global-options"></a></h2>
@@ -62,6 +60,47 @@ head(idx)</p>
 </ul></li>
 </ul></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu">rdindex</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">idx</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Package         Dataset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     AER         Affairs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     AER    ArgentinaCPI</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     AER       BankWages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     AER   BenderlyZwick</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     AER       BondYield</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     AER CartelStability</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                          Title Rows Cols</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                             Fair's Extramarital Affairs Data  601    9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                            Consumer Price Index in Argentina   80    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                   Bank Wages  474    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 Benderly and Zwick Data: Inflation, Growth and Stock Returns   31    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                                              Bond Yield Data   60    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                              CartelStability  328    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   n_binary n_character n_factor n_logical n_numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        2           0        2         0         7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        0           0        0         0         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        2           0        3         0         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        0           0        0         0         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        0           0        0         0         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        2           0        3         0         2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                          CSV</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         https://vincentarelbundock.github.io/Rdatasets/csv/AER/Affairs.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    https://vincentarelbundock.github.io/Rdatasets/csv/AER/ArgentinaCPI.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       https://vincentarelbundock.github.io/Rdatasets/csv/AER/BankWages.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   https://vincentarelbundock.github.io/Rdatasets/csv/AER/BenderlyZwick.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       https://vincentarelbundock.github.io/Rdatasets/csv/AER/BondYield.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://vincentarelbundock.github.io/Rdatasets/csv/AER/CartelStability.csv</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                           Doc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         https://vincentarelbundock.github.io/Rdatasets/doc/AER/Affairs.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    https://vincentarelbundock.github.io/Rdatasets/doc/AER/ArgentinaCPI.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       https://vincentarelbundock.github.io/Rdatasets/doc/AER/BankWages.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   https://vincentarelbundock.github.io/Rdatasets/doc/AER/BenderlyZwick.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       https://vincentarelbundock.github.io/Rdatasets/doc/AER/BondYield.html</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://vincentarelbundock.github.io/Rdatasets/doc/AER/CartelStability.html</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

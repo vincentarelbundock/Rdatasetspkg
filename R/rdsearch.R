@@ -8,6 +8,7 @@
 #' @inheritParams base::grepl
 #' @template options
 #' @return A data frame with matching datasets.
+#' @examples
 #' # Search all fields (default behavior)
 #' rdsearch("iris")
 #'

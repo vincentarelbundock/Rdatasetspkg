@@ -8,8 +8,6 @@ rdindex()
 }
 \value{
 A data frame containing all available datasets from Rdatasets with columns for Package, Dataset, Title, and other metadata.
-idx <- rdindex()
-head(idx)
 }
 \description{
 Downloads and returns the complete Rdatasets index as a data frame.
@@ -36,3 +34,7 @@ The following global options control package behavior:
 }
 }
 
+\examples{
+idx <- rdindex()
+head(idx)
+}
