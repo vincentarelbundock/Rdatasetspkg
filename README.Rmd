@@ -115,7 +115,7 @@ options(Rdatasets_cache = FALSE)
 
 The package supports three output formats that can be set globally:
 
-```{r format, eval=FALSE}
+```{r format}
 # Default: data.frame (no additional dependencies)
 options(Rdatasets_cache = FALSE)
 options(Rdatasets_format = "data.frame")

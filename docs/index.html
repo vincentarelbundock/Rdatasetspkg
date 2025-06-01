@@ -195,14 +195,42 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "data.frame"</span></span>
 <span></span>
 <span><span class="co"># Tibble format (requires tibble package)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"tibble"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 150 × 6</span></span>
+<span><span class="co">#&gt;    rownames Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span><span class="co">#&gt;       &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt;  1        1          5.1         3.5          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  2        2          4.9         3            1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  3        3          4.7         3.2          1.3         0.2 setosa </span></span>
+<span><span class="co">#&gt;  4        4          4.6         3.1          1.5         0.2 setosa </span></span>
+<span><span class="co">#&gt;  5        5          5           3.6          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt;  6        6          5.4         3.9          1.7         0.4 setosa </span></span>
+<span><span class="co">#&gt;  7        7          4.6         3.4          1.4         0.3 setosa </span></span>
+<span><span class="co">#&gt;  8        8          5           3.4          1.5         0.2 setosa </span></span>
+<span><span class="co">#&gt;  9        9          4.4         2.9          1.4         0.2 setosa </span></span>
+<span><span class="co">#&gt; 10       10          4.9         3.1          1.5         0.1 setosa </span></span>
+<span><span class="co">#&gt; # ℹ 140 more rows</span></span>
 <span></span>
 <span><span class="co"># data.table format (requires data.table package)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.table"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rddata.html">rddata</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      rownames Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span></span>
+<span><span class="co">#&gt;         &lt;int&gt;        &lt;num&gt;       &lt;num&gt;        &lt;num&gt;       &lt;num&gt;    &lt;char&gt;</span></span>
+<span><span class="co">#&gt;   1:        1          5.1         3.5          1.4         0.2    setosa</span></span>
+<span><span class="co">#&gt;   2:        2          4.9         3.0          1.4         0.2    setosa</span></span>
+<span><span class="co">#&gt;   3:        3          4.7         3.2          1.3         0.2    setosa</span></span>
+<span><span class="co">#&gt;   4:        4          4.6         3.1          1.5         0.2    setosa</span></span>
+<span><span class="co">#&gt;   5:        5          5.0         3.6          1.4         0.2    setosa</span></span>
+<span><span class="co">#&gt;  ---                                                                     </span></span>
+<span><span class="co">#&gt; 146:      146          6.7         3.0          5.2         2.3 virginica</span></span>
+<span><span class="co">#&gt; 147:      147          6.3         2.5          5.0         1.9 virginica</span></span>
+<span><span class="co">#&gt; 148:      148          6.5         3.0          5.2         2.0 virginica</span></span>
+<span><span class="co">#&gt; 149:      149          6.2         3.4          5.4         2.3 virginica</span></span>
+<span><span class="co">#&gt; 150:      150          5.9         3.0          5.1         1.8 virginica</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>Rdatasets_format <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span></span></code></pre></div>
