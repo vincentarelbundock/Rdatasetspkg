@@ -5,7 +5,6 @@
 #'
 #' @template options
 #' @return A data frame containing all available datasets from Rdatasets with columns for Package, Dataset, Title, and other metadata.
-#' @examplesIf FALSE
 #' idx <- rdindex()
 #' head(idx)
 #' @export
