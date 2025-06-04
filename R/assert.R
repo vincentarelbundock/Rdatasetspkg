@@ -141,7 +141,7 @@ check_available_data <- function(dataset, package = NULL) {
   
   # If package is NULL, try to find exact match in Rdatasets
   if (is.null(package)) {
-    matches <- rsearch(paste0("^", dataset, "$"))
+    matches <- rdsearch(paste0("^", dataset, "$"))
     if (nrow(matches) == 1) {
       package <- matches$Package[1]
       dataset <- matches$Dataset[1]
@@ -157,21 +157,21 @@ check_available_data <- function(dataset, package = NULL) {
       stop(msg, call. = FALSE)
     } else {
       msg <- sprintf(
-        "Dataset '%s' not found. Please specify the package name, or use rsearch('...') to search available datasets",
+        "Dataset '%s' not found. Please specify the package name, or use rdsearch('...') to search available datasets",
         dataset
       )
       stop(msg, call. = FALSE)
     }
   } else {
     # If both package and dataset are provided, validate they exist together
-    idx <- rindex()
+    idx <- rdindex()
     match_exists <- any(idx$Package == package & idx$Dataset == dataset)
     if (!match_exists) {
       # Check if package exists
       package_exists <- any(idx$Package == package)
       if (!package_exists) {
         msg <- sprintf(
-          "Package '%s' not found in Rdatasets. Use rsearch() to find available packages and datasets",
+          "Package '%s' not found in Rdatasets. Use rdsearch() to find available packages and datasets",
           package
         )
       } else {

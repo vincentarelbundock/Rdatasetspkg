@@ -3,7 +3,7 @@
 #' @description
 #' Opens the documentation for a dataset from Rdatasets as an HTML page using `getOption("viewer")` or the Rstudio viewer.
 #'
-#' @inheritParams rdata
+#' @inheritParams rddata
 #' @template options
 #' @details
 #' The function attempts to open the documentation in the following order:
@@ -18,10 +18,10 @@
 #' If no viewer is available, the function will stop with an error message.
 #' @return Invisibly returns `NULL`. The function's primary purpose is to open the dataset documentation in a viewer window.
 #' @examplesIf FALSE
-#' rdocs("Titanic", "Stat2Data")
-#' rdocs("iris", "datasets")
+#' rddocs(dataset = "Titanic", package ="Stat2Data")
+#' rddocs("iris", "datasets")
 #' @export
-rdocs <- function(dataset, package = NULL) {
+rddocs <- function(dataset, package = NULL) {
   # Validate dataset and package combination
   validated <- check_available_data(dataset, package)
   package <- validated$package

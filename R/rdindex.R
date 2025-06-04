@@ -18,10 +18,10 @@
 #' * `CSV`: Character. URL to download the dataset in CSV format
 #' * `Doc`: Character. URL to the dataset's documentation
 #' @examples
-#' idx <- rindex()
+#' idx <- rdindex()
 #' head(idx)
 #' @export
-rindex <- function() {
+rdindex <- function() {
   cache <- getOption("Rdatasets_cache", default = TRUE)
   assert_flag(cache)
 

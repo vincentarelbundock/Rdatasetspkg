@@ -31,53 +31,53 @@ remotes::install_github("vincentarelbundock/Rdatasets")
 install.packages("nanoparquet")
 ```
 
-## `rsearch()` Search for datasets
+## `rdsearch()` Search for datasets
 
-Use `rsearch()` to find datasets by name, package, or title:
+Use `rdsearch()` to find datasets by name, package, or title:
 
 ```{r search}
 library(Rdatasets)
 library(tinytable)
 
 # Search all fields (default behavior)
-rsearch(pattern = "iris") |> head()
+rdsearch(pattern = "iris") |> head()
 
 # Case-insensitive search for datasets about the Titanic
-rsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
+rdsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
 
 # Search only in package names
-rsearch(pattern = "ggplot2movies", field = "package") 
+rdsearch(pattern = "ggplot2movies", field = "package") 
 
 # Search only in dataset names
-rsearch(pattern = "iris", field = "dataset")
+rdsearch(pattern = "iris", field = "dataset")
 
 # Returns no rows
-rsearch(pattern = "bad_name", field = "dataset") 
+rdsearch(pattern = "bad_name", field = "dataset") 
 
 # Search only in titles
-rsearch(pattern = "Edgar Anderson", field = "title")
+rdsearch(pattern = "Edgar Anderson", field = "title")
 ```
 
-## `rdata()` Download datasets
+## `rddata()` Download datasets
 
-Use `rdata()` to download and load datasets:
+Use `rddata()` to download and load datasets:
 
 ```{r download}
 # Download the famous André-Michel Guerry dataset
-guerry <- rdata("Guerry")
+guerry <- rddata("Guerry")
 head(guerry, 3)
 
 # Download the Titanic data from a specific package
-titanic <- rdata("Titanic", "Stat2Data")
+titanic <- rddata("Titanic", "Stat2Data")
 head(titanic, 3)
 ```
 
-## `rindex()` Browse the full dataset index
+## `rdindex()` Browse the full dataset index
 
-Use `rindex()` to get the complete list of available datasets:
+Use `rdindex()` to get the complete list of available datasets:
 
 ```{r index}
-idx <- rindex()
+idx <- rdindex()
 cat("Total datasets available:", nrow(idx), "\n")
 
 cat("Number of packages:", length(unique(idx$Package)), "\n")
@@ -85,16 +85,16 @@ cat("Number of packages:", length(unique(idx$Package)), "\n")
 tail(idx, 10)
 ```
 
-## `rdocs()` View dataset documentation
+## `rddocs()` View dataset documentation
 
-Use `rdocs()` to open dataset documentation in your browser:
+Use `rddocs()` to open dataset documentation in your browser:
 
 ```{r docs, eval=FALSE}
 # Open documentation for the iris dataset
-rdocs("iris", "datasets")
+rddocs("iris", "datasets")
 
 # Automatic package detection works here too
-rdocs("mtcars")
+rddocs("mtcars")
 ```
 
 ## Performance Features
@@ -119,18 +119,18 @@ The package supports three output formats that can be set globally:
 # Default: data.frame (no additional dependencies)
 options(Rdatasets_cache = FALSE)
 options(Rdatasets_class = "data.frame")
-rdata("iris") |> class()
+rddata("iris") |> class()
 
 # Tibble format (requires tibble package)
 options(Rdatasets_class = "tibble")
-rdata("iris")
+rddata("iris")
 
 # data.table format (requires data.table package)
 options(Rdatasets_class = "data.table")
-rdata("iris")
+rddata("iris")
 
 options(Rdatasets_cache = TRUE)
 options(Rdatasets_class = "data.frame")
 ```
 
-The format setting applies to all functions that return data (`rdata()`, `rindex()`, `rsearch()`).
+The format setting applies to all functions that return data (`rddata()`, `rdindex()`, `rdsearch()`).

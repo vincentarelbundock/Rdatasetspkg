@@ -5,20 +5,20 @@
 #'
 #' [https://vincentarelbundock.github.io/Rdatasets/](https://vincentarelbundock.github.io/Rdatasets/)
 #'
-#' @param dataset String. Name of the dataset to download from the Rdatasets archive. Use `rsearch()` to search available datasets.
+#' @param dataset String. Name of the dataset to download from the Rdatasets archive. Use `rdsearch()` to search available datasets.
 #' @param package String. Package name that originally published the data. If NULL, the function will attempt to automatically detect the package by searching for an exact match in the Rdatasets index.
 #' @template options
 #' @return A data frame containing the dataset. The columns and rows vary based on the dataset.
 #' @details
-#' If the \code{nanoparquet} package is installed, \code{rdata()} will use the
+#' If the \code{nanoparquet} package is installed, \code{rddata()} will use the
 #' Parquet format, which is faster and uses less bandwidth to download. If
 #' \code{nanoparquet} is not available, the function automatically falls back
 #' to CSV format using base R functionality.
 #' @examples
-#' dat <- rdata("Titanic", "Stat2Data")
+#' dat <- rddata("Titanic", "Stat2Data")
 #' head(dat)
 #' @export
-rdata <- function(
+rddata <- function(
   dataset,
   package = NULL
 ) {

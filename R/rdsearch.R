@@ -22,21 +22,21 @@
 #' * `Doc`: Character. URL to the dataset's documentation
 #' @examples
 #' # Search all fields (default behavior)
-#' rsearch("iris")
+#' rdsearch("iris")
 #'
 #' # Case-insensitive search
-#' rsearch("(?i)titanic")
+#' rdsearch("(?i)titanic")
 #'
 #' # Search only in package names
-#' rsearch("datasets", field = "package")
+#' rdsearch("datasets", field = "package")
 #'
 #' # Search only in dataset names
-#' rsearch("iris", field = "dataset")
+#' rdsearch("iris", field = "dataset")
 #'
 #' # Search only in titles
-#' rsearch("Edgar Anderson", field = "title")
+#' rdsearch("Edgar Anderson", field = "title")
 #' @export
-rsearch <- function(pattern, field = NULL, fixed = FALSE, perl = FALSE, ignore.case = FALSE) {
+rdsearch <- function(pattern, field = NULL, fixed = FALSE, perl = FALSE, ignore.case = FALSE) {
   assert_string(pattern)
   assert_flag(fixed)
   assert_flag(perl)
@@ -49,7 +49,7 @@ rsearch <- function(pattern, field = NULL, fixed = FALSE, perl = FALSE, ignore.c
   cache <- getOption("Rdatasets_cache", default = TRUE)
   assert_flag(cache)
 
-  idx <- rindex()
+  idx <- rdindex()
 
   if (is.null(field)) {
     # Search in all three columns
