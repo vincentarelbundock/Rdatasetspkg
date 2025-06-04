@@ -85,16 +85,16 @@ cat("Number of packages:", length(unique(idx$Package)), "\n")
 tail(idx, 10)
 ```
 
-## `rddocs()` View dataset documentation
+## `rdocs()` View dataset documentation
 
-Use `rddocs()` to open dataset documentation in your browser:
+Use `rdocs()` to open dataset documentation in your browser:
 
 ```{r docs, eval=FALSE}
 # Open documentation for the iris dataset
-rddocs("iris", "datasets")
+rdocs("iris", "datasets")
 
 # Automatic package detection works here too
-rddocs("mtcars")
+rdocs("mtcars")
 ```
 
 ## Performance Features
@@ -118,19 +118,19 @@ The package supports three output formats that can be set globally:
 ```{r format}
 # Default: data.frame (no additional dependencies)
 options(Rdatasets_cache = FALSE)
-options(Rdatasets_format = "data.frame")
+options(Rdatasets_class = "data.frame")
 rdata("iris") |> class()
 
 # Tibble format (requires tibble package)
-options(Rdatasets_format = "tibble")
+options(Rdatasets_class = "tibble")
 rdata("iris")
 
 # data.table format (requires data.table package)
-options(Rdatasets_format = "data.table")
+options(Rdatasets_class = "data.table")
 rdata("iris")
 
 options(Rdatasets_cache = TRUE)
-options(Rdatasets_format = "data.frame")
+options(Rdatasets_class = "data.frame")
 ```
 
 The format setting applies to all functions that return data (`rdata()`, `rindex()`, `rsearch()`).

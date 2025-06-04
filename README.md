@@ -34,32 +34,32 @@ library(tinytable)
 
 # Search all fields (default behavior)
 rsearch(pattern = "iris") |> head()
-#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
-#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
-#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+#>       Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 1010 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 1011 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 
 # Case-insensitive search for datasets about the Titanic
 rsearch(pattern = "(?i)TITANIC", perl = TRUE)[, 1:4]
 #>         Package         Dataset                                 Title Rows
-#> 247     carData TitanicSurvival Survival of Passengers on the Titanic 1309
-#> 289  causaldata         titanic  Data from the sinking of the Titanic 2201
-#> 323       COUNT         titanic                               titanic 1316
-#> 324       COUNT      titanicgrp                            titanicgrp   12
-#> 577    datasets         Titanic Survival of passengers on the Titanic   32
-#> 2319  Stat2Data         Titanic             Passengers on the Titanic 1313
-#> 2612        vcd       Lifeboats              Lifeboats on the Titanic   18
-#> 2668   vcdExtra        Titanicp             Passengers on the Titanic 1309
+#> 698     carData TitanicSurvival Survival of Passengers on the Titanic 1309
+#> 769  causaldata         titanic  Data from the sinking of the Titanic 2201
+#> 803       COUNT         titanic                               titanic 1316
+#> 804       COUNT      titanicgrp                            titanicgrp   12
+#> 1057   datasets         Titanic Survival of passengers on the Titanic   32
+#> 2918  Stat2Data         Titanic             Passengers on the Titanic 1313
+#> 3274        vcd       Lifeboats              Lifeboats on the Titanic   18
+#> 3330   vcdExtra        Titanicp             Passengers on the Titanic 1309
 
 # Search only in package names
 rsearch(pattern = "ggplot2movies", field = "package") 
 #>            Package Dataset                                             Title  Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                         CSV                                                                          Doc
-#> 1129 ggplot2movies  movies Movie information and user ratings from IMDB.com. 58788   24        7           2        0         0        22 https://vincentarelbundock.github.io/Rdatasets/csv/ggplot2movies/movies.csv https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2movies/movies.html
+#> 1659 ggplot2movies  movies Movie information and user ratings from IMDB.com. 58788   24        7           2        0         0        22 https://vincentarelbundock.github.io/Rdatasets/csv/ggplot2movies/movies.csv https://vincentarelbundock.github.io/Rdatasets/doc/ggplot2movies/movies.html
 
 # Search only in dataset names
 rsearch(pattern = "iris", field = "dataset")
-#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
-#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
-#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+#>       Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 1010 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 1011 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 
 # Returns no rows
 rsearch(pattern = "bad_name", field = "dataset") 
@@ -68,9 +68,9 @@ rsearch(pattern = "bad_name", field = "dataset")
 
 # Search only in titles
 rsearch(pattern = "Edgar Anderson", field = "title")
-#>      Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
-#> 530 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
-#> 531 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
+#>       Package Dataset                      Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                   CSV                                                                    Doc
+#> 1010 datasets    iris Edgar Anderson's Iris Data  150    5        0           0        1         0         4  https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris.csv  https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html
+#> 1011 datasets   iris3 Edgar Anderson's Iris Data   50   12        0           0        0         0        12 https://vincentarelbundock.github.io/Rdatasets/csv/datasets/iris3.csv https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris3.html
 ```
 
 ## `rdata()` Download datasets
@@ -102,35 +102,35 @@ Use `rindex()` to get the complete list of available datasets:
 ``` r
 idx <- rindex()
 cat("Total datasets available:", nrow(idx), "\n")
-#> Total datasets available: 2789
+#> Total datasets available: 3451
 
 cat("Number of packages:", length(unique(idx$Package)), "\n")
-#> Number of packages: 86
+#> Number of packages: 100
 
 tail(idx, 10)
 #>         Package Dataset   Title Rows Cols n_binary n_character n_factor n_logical n_numeric                                                                       CSV                                                                        Doc
-#> 2780 wooldridge twoyear twoyear 6763   23       15           0        0         0        23 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/twoyear.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/twoyear.html
-#> 2781 wooldridge   volat   volat  558   17        0           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/volat.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/volat.html
-#> 2782 wooldridge   vote1   vote1  173   10        1           1        0         0         9   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote1.html
-#> 2783 wooldridge   vote2   vote2  186   26        5           1        0         0        25   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote2.html
-#> 2784 wooldridge voucher voucher  990   19       13           0        0         0        19 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/voucher.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/voucher.html
-#> 2785 wooldridge   wage1   wage1  526   24       16           0        0         0        24   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage1.html
-#> 2786 wooldridge   wage2   wage2  935   17        4           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage2.html
-#> 2787 wooldridge wagepan wagepan 4360   44       37           0        0         0        44 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wagepan.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wagepan.html
-#> 2788 wooldridge wageprc wageprc  286   20        0           0        0         0        20 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wageprc.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wageprc.html
-#> 2789 wooldridge    wine    wine   21    5        0           1        0         0         4    https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wine.csv    https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wine.html
+#> 3442 wooldridge twoyear twoyear 6763   23       15           0        0         0        23 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/twoyear.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/twoyear.html
+#> 3443 wooldridge   volat   volat  558   17        0           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/volat.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/volat.html
+#> 3444 wooldridge   vote1   vote1  173   10        1           1        0         0         9   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote1.html
+#> 3445 wooldridge   vote2   vote2  186   26        5           1        0         0        25   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/vote2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/vote2.html
+#> 3446 wooldridge voucher voucher  990   19       13           0        0         0        19 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/voucher.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/voucher.html
+#> 3447 wooldridge   wage1   wage1  526   24       16           0        0         0        24   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage1.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage1.html
+#> 3448 wooldridge   wage2   wage2  935   17        4           0        0         0        17   https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wage2.csv   https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wage2.html
+#> 3449 wooldridge wagepan wagepan 4360   44       37           0        0         0        44 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wagepan.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wagepan.html
+#> 3450 wooldridge wageprc wageprc  286   20        0           0        0         0        20 https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wageprc.csv https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wageprc.html
+#> 3451 wooldridge    wine    wine   21    5        0           1        0         0         4    https://vincentarelbundock.github.io/Rdatasets/csv/wooldridge/wine.csv    https://vincentarelbundock.github.io/Rdatasets/doc/wooldridge/wine.html
 ```
 
-## `rddocs()` View dataset documentation
+## `rdocs()` View dataset documentation
 
-Use `rddocs()` to open dataset documentation in your browser:
+Use `rdocs()` to open dataset documentation in your browser:
 
 ``` r
 # Open documentation for the iris dataset
-rddocs("iris", "datasets")
+rdocs("iris", "datasets")
 
 # Automatic package detection works here too
-rddocs("mtcars")
+rdocs("mtcars")
 ```
 
 ## Performance Features
@@ -158,12 +158,12 @@ The package supports three output formats that can be set globally:
 ``` r
 # Default: data.frame (no additional dependencies)
 options(Rdatasets_cache = FALSE)
-options(Rdatasets_format = "data.frame")
+options(Rdatasets_class = "data.frame")
 rdata("iris") |> class()
 #> [1] "data.frame"
 
 # Tibble format (requires tibble package)
-options(Rdatasets_format = "tibble")
+options(Rdatasets_class = "tibble")
 rdata("iris")
 #> # A tibble: 150 × 6
 #>    rownames Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -181,7 +181,7 @@ rdata("iris")
 #> # ℹ 140 more rows
 
 # data.table format (requires data.table package)
-options(Rdatasets_format = "data.table")
+options(Rdatasets_class = "data.table")
 rdata("iris")
 #>      rownames Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 #>         <int>        <num>       <num>        <num>       <num>    <char>
@@ -198,7 +198,7 @@ rdata("iris")
 #> 150:      150          5.9         3.0          5.1         1.8 virginica
 
 options(Rdatasets_cache = TRUE)
-options(Rdatasets_format = "data.frame")
+options(Rdatasets_class = "data.frame")
 ```
 
 The format setting applies to all functions that return data (`rdata()`,

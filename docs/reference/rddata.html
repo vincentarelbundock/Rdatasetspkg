@@ -74,8 +74,8 @@ to CSV format using base R functionality.</p>
 <p>The following global options control package behavior:</p><ul><li><p><code>Rdatasets_cache</code>: Logical</p><ul><li><p>Whether to cache downloaded data and index for faster subsequent access. Default: <code>TRUE</code>. Please keep this option TRUE as it makes repeated access faster and avoids overloading the Rdatasets server. Only set to FALSE if local memory is severely limited.</p></li>
 <li><p>Ex: `options(Rdatasets_cache = TRUE)“</p></li>
 </ul></li>
-<li><p><code>Rdatasets_format</code>: String</p><ul><li><p>Output format for returned data. One of "data.frame" (default), "tibble", or "data.table". Default: <code>"data.frame"</code>. Requires the respective packages to be installed for "tibble" or "data.table" formats.</p></li>
-<li><p>Ex: <code>options(Rdatasets_format = "tibble")</code></p></li>
+<li><p><code>Rdatasets_class</code>: String</p><ul><li><p>Output format for returned data. One of "data.frame" (default), "tibble", or "data.table". Default: <code>"data.frame"</code>. Requires the respective packages to be installed for "tibble" or "data.table" formats.</p></li>
+<li><p>Ex: <code>options(Rdatasets_class = "tibble")</code></p></li>
 </ul></li>
 <li><p><code>Rdataset_path</code>: String.</p><ul><li><p>Base URL for the Rdatasets archive. Default: <code>"https://vincentarelbundock.github.io/Rdatasets/"</code>. Advanced users can set this to use a different mirror or local copy.</p></li>
 <li><p>Ex: <code>options(Rdataset_path = "https://vincentarelbundock.github.io/Rdatasets/")</code></p></li>

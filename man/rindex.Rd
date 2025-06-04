@@ -35,10 +35,10 @@ The following global options control package behavior:
 \item Whether to cache downloaded data and index for faster subsequent access. Default: \code{TRUE}. Please keep this option TRUE as it makes repeated access faster and avoids overloading the Rdatasets server. Only set to FALSE if local memory is severely limited.
 \item Ex: `options(Rdatasets_cache = TRUE)``
 }
-\item \code{Rdatasets_format}: String
+\item \code{Rdatasets_class}: String
 \itemize{
-\item Output format for returned data. One of "data.frame" (default), "tibble", or "data.table". Default: \code{"data.frame"}. Requires the respective packages to be installed for "tibble" or "data.table" formats.
-\item Ex: \code{options(Rdatasets_format = "tibble")}
+\item Output class of the returned data. One of "data.frame" (default), "tibble", or "data.table". Default: \code{"data.frame"}. Requires the respective packages to be installed for "tibble" or "data.table" formats.
+\item Ex: \code{options(Rdatasets_class = "tibble")}
 }
 \item \code{Rdataset_path}: String.
 \itemize{

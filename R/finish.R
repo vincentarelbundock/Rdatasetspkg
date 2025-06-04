@@ -1,6 +1,6 @@
 #' @keywords internal
 finish <- function(data) {
-  format <- getOption("Rdatasets_format", default = "data.frame")
+  format <- getOption("Rdatasets_class", default = "data.frame")
   assert_choice(format, choices = c("data.frame", "tibble", "data.table"))
 
   if (format == "data.frame") {

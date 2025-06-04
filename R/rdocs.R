@@ -18,10 +18,10 @@
 #' If no viewer is available, the function will stop with an error message.
 #' @return Invisibly returns `NULL`. The function's primary purpose is to open the dataset documentation in a viewer window.
 #' @examplesIf FALSE
-#' rddocs("Titanic", "Stat2Data")
-#' rddocs("iris", "datasets")
+#' rdocs("Titanic", "Stat2Data")
+#' rdocs("iris", "datasets")
 #' @export
-rddocs <- function(dataset, package = NULL) {
+rdocs <- function(dataset, package = NULL) {
   # Validate dataset and package combination
   validated <- check_available_data(dataset, package)
   package <- validated$package
