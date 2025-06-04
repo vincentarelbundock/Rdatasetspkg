@@ -5,6 +5,18 @@
 #'
 #' @inheritParams rdata
 #' @template options
+#' @details
+#' The function attempts to open the documentation in the following order:
+#' 1. RStudio's built-in viewer (if `rstudioapi` is available)
+#' 2. The viewer specified in `getOption("viewer")`
+#' 3. The default browser specified in `getOption("browser")`
+#'
+#' To control which viewer is used, you can set the following options:
+#' * `options(viewer = function(url) { ... })` - Set a custom viewer function
+#' * `options(browser = "firefox")` - Set the default browser (used as fallback)
+#'
+#' If no viewer is available, the function will stop with an error message.
+#' @return Invisibly returns `NULL`. The function's primary purpose is to open the dataset documentation in a viewer window.
 #' @examplesIf FALSE
 #' rddocs("Titanic", "Stat2Data")
 #' rddocs("iris", "datasets")
