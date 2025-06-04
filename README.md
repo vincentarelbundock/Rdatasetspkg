@@ -201,5 +201,5 @@ options(Rdatasets_cache = TRUE)
 options(Rdatasets_class = "data.frame")
 ```
 
-The format setting applies to all functions that return data (`rddata()`,
-`rdindex()`, `rdsearch()`).
+The format setting applies to all functions that return data
+(`rddata()`, `rdindex()`, `rdsearch()`).
