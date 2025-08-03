@@ -138,7 +138,7 @@ assert_dependency <- function(
 check_available_data <- function(dataset, package = NULL) {
   assert_string(dataset)
   assert_string(package, null.ok = TRUE)
-  
+
   # If package is NULL, try to find exact match in Rdatasets
   if (is.null(package)) {
     matches <- rdsearch(paste0("^", dataset, "$"))
@@ -146,13 +146,14 @@ check_available_data <- function(dataset, package = NULL) {
       package <- matches$Package[1]
       dataset <- matches$Dataset[1]
     } else if (nrow(matches) > 1) {
+      options_list <- paste(
+        sprintf("  - %s::%s", matches$Package, matches$Dataset),
+        collapse = "\n"
+      )
       msg <- sprintf(
-        "Multiple matches found for dataset '%s'. Please specify the package name. Available options: %s",
+        "Multiple matches found for dataset '%s'. Please specify the package name.\nAvailable options:\n%s",
         dataset,
-        paste(
-          sprintf("  - %s::%s", matches$Package, matches$Dataset),
-          collapse = "\\n"
-        )
+        options_list
       )
       stop(msg, call. = FALSE)
     } else {
@@ -177,16 +178,32 @@ check_available_data <- function(dataset, package = NULL) {
       } else {
         # Package exists but dataset doesn't
         available_datasets <- idx$Dataset[idx$Package == package]
-        msg <- sprintf(
-          "Dataset '%s' not found in package '%s'. Available datasets in this package: %s",
-          dataset,
-          package,
-          paste(available_datasets, collapse = ", ")
-        )
+        if (length(available_datasets) <= 10) {
+          # For small lists, show inline
+          datasets_list <- paste(available_datasets, collapse = ", ")
+          msg <- sprintf(
+            "Dataset '%s' not found in package '%s'. Available datasets in this package: %s",
+            dataset,
+            package,
+            datasets_list
+          )
+        } else {
+          # For large lists, show as bullet points
+          datasets_list <- paste(
+            sprintf("  - %s", available_datasets),
+            collapse = "\n"
+          )
+          msg <- sprintf(
+            "Dataset '%s' not found in package '%s'.\nAvailable datasets in this package:\n%s",
+            dataset,
+            package,
+            datasets_list
+          )
+        }
       }
       stop(msg, call. = FALSE)
     }
   }
-  
+
   return(list(package = package, dataset = dataset))
 }
