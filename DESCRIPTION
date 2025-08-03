@@ -1,8 +1,7 @@
 Package: Rdatasets
 Type: Package
 Title: Access Datasets from the Rdatasets Archive
-Version: 0.0.1
-Date: 2025-05-31
+Version: 0.0.1.1
 Authors@R:
     c(person(given = "Vincent",
              family = "Arel-Bundock",
