@@ -17,12 +17,12 @@ rdsearch(
 
 \item{field}{String. Which field to search in. One of "package", "dataset", "title". If NULL (default), searches in all three fields.}
 
-\item{fixed}{logical. If \code{TRUE}, \code{pattern} is a string to be
+\item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
 
 \item{perl}{logical.  Should Perl-compatible regexps be used?}
 
-\item{ignore.case}{logical. if \code{FALSE}, the pattern matching is \emph{case
+\item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
